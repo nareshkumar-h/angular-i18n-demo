@@ -18,9 +18,9 @@ ng add @angular/localize
 #### Step 2: Extract 
 
 ```
-ng extract-i18n
+ng extract-i18n --output-path src/locale
 ```
-* Note: This will create a file messages.xlf
+* Note: This will create a file "messages.xlf" in src/locale folder.
 
 * messages.xlf
 ```xml
@@ -57,7 +57,9 @@ ng extract-i18n
   </file>
 </xliff>
 ```
-
+* Note:
+ * Added target-language ( target-language="fr")
+ * Added target <target>En construction !</target>
 
 #### Step 3: Add the Configurations for locale in angular.json
 
