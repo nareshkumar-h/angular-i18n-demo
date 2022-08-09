@@ -1,27 +1,115 @@
 # I18Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+* app.component.html
+```html
+<section>
+  <article>
+    <h1 i18n>Under Construction!</h1>
+    <p>This page is under construction.</p>
+  </article>  
+</section>
+```
 
-## Development server
+#### Step 1: Install Localize
+```
+ng add @angular/localize
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#### Step 2: Extract 
 
-## Code scaffolding
+```
+ng extract-i18n
+```
+* Note: This will create a file messages.xlf
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* messages.xlf
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="7496367199789781856" datatype="html">
+        <source>Under Construction!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+```
+* messages.fr.xlf ( create a new file for french - copy messages.xlf and translate the text to french)
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" target-language="fr" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="7496367199789781856" datatype="html">
+        <source>Under Construction!</source>
+        <target>En construction !</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+```
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Step 3: Add the Configurations for locale in angular.json
 
-## Running unit tests
+```
+      "i18n": { 
+        "sourceLocale": "en-US", 
+        "locales": { 
+          "fr": "messages.fr.xlf" 
+        } 
+      }, 
+      "architect": {
+      
+      .... 
+      }
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Inside architect, configurations
+```
+ "en-US": { 
+              "localize": ["en-US"] 
+            }, 
+            "fr": { 
+              "localize": ["fr"] 
+            } 
+```
 
-## Running end-to-end tests
+* Inside serve tag, configurations
+```
+ "en-US": { 
+              "browserTarget": "i18-demo:build:en-US" 
+            }, 
+            "fr": { 
+              "browserTarget": "i18-demo:build:fr" 
+            }
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+#### Step 4: Run the server with different locale
 
-## Further help
+* English
+```
+ng serve --configuration=en-US
+```
+![image](https://user-images.githubusercontent.com/2763774/183627874-d3fadb54-1773-44dc-9ae9-72cd9a49e4dc.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+* French
+```
+ng serve --configuration=fr
+```
+
+![image](https://user-images.githubusercontent.com/2763774/183627722-21998d6c-d23d-4fbf-aa07-9c8db9230224.png)
+
+
+
