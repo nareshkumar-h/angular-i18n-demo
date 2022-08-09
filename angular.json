@@ -12,7 +12,7 @@
       "i18n": { 
         "sourceLocale": "en-US", 
         "locales": { 
-          "fr": "messages.fr.xlf" 
+          "fr": "src/locale/messages.fr.xlf" 
         } 
       }, 
       "architect": {
