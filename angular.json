@@ -9,6 +9,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": { 
+        "sourceLocale": "en-US", 
+        "locales": { 
+          "fr": "messages.fr.xlf" 
+        } 
+      }, 
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -56,7 +62,13 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
-            }
+            },
+            "en-US": { 
+              "localize": ["en-US"] 
+            }, 
+            "fr": { 
+              "localize": ["fr"] 
+            } 
           },
           "defaultConfiguration": "production"
         },
@@ -68,7 +80,13 @@
             },
             "development": {
               "browserTarget": "i18-demo:build:development"
-            }
+            },
+            "en-US": { 
+              "browserTarget": "i18-demo:build:en-US" 
+            }, 
+            "fr": { 
+              "browserTarget": "i18-demo:build:fr" 
+            } 
           },
           "defaultConfiguration": "development"
         },
