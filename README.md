@@ -59,7 +59,7 @@ ng extract-i18n --output-path src/locale
 ```
 * Note:
  * Added target-language ( target-language="fr")
- * Added target <target>En construction !</target>
+ * Added target `<target>En construction !</target>`
 
 #### Step 3: Add the Configurations for locale in angular.json
 
